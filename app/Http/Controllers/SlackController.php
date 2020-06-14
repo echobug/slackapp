@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Post;
+Use Slack;
 use Illuminate\Http\Request;
 
 class SlackController extends Controller
@@ -39,7 +40,10 @@ class SlackController extends Controller
     {
 
         $input = $request->all();
+        $slack_input = $request->input('content');
+
         Post::create($input);
+        Slack::send($slack_input);
 
         return redirect('/slack');
     }
