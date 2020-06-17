@@ -39,10 +39,10 @@ class SlackController extends Controller
     public function store(Request $request)
     {
 
-        $input = $request->all();
+        //$input = $request->all();
         $slack_input = $request->input('content');
 
-        Post::create($input);
+        //Post::create($input);
         Slack::send($slack_input);
 
         return redirect('/slack');
